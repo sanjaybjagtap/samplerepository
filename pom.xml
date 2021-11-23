@@ -11,8 +11,8 @@
 
 
     <groupId>spring-boot-hibernate-example</groupId>
-    <artifactId>spring-boot-hibernate-example</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <artifactId>SpringBoot_H2_Test</artifactId>
+    <version>1.0</version>
 
     <dependencies>
         <dependency>
@@ -49,7 +49,35 @@
             <artifactId>ojdbc6</artifactId>
             <version>11.2.0.4</version>
             <scope>system</scope>
-            <systemPath>/Users/i327480/Softwares/DBDriver/ojdbc6.jar</systemPath>
+            <systemPath>/Users/c5331724/SAP-Data/Softwares/DBDriver/ojdbc6.jar</systemPath>
         </dependency>
     </dependencies>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>central</id>
+            <name>Central Repository</name>
+            <url>https://repo.maven.apache.org/maven2</url>
+            <layout>default</layout>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <repositories>
+        <repository>
+            <id>central</id>
+            <name>Central Repository</name>
+            <url>https://repo.maven.apache.org/maven2</url>
+            <layout>default</layout>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    
 </project>
