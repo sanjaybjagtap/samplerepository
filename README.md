@@ -1,1 +1,1 @@
-This is README for GITHUB ACTION REPO
+# spring-boot-hibernate-example
