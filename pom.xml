@@ -50,7 +50,7 @@
             <version>11.2.0.4</version>
             <scope>system</scope>
             <!-- <systemPath>/Users/c5331724/SAP-Data/Softwares/DBDriver/ojdbc6.jar</systemPath> -->
-            <systemPath>./driver/ojdbc6.jar</systemPath>
+            <systemPath>/home/runner/work/samplerepository/samplerepository/driver/ojdbc6.jar</systemPath>
         </dependency>
     </dependencies>
 
