@@ -28,14 +28,21 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 
-    - name: Login to docker hub
-      uses: actions/login-action@v1
-      with:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_PASSWORD }}
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      path: |-
+        samplerepo/target/*jar
+      if-no-files-found: error
+      retention-days: 3
 
-    - name: Set up Docker Buildx
-      id: buildx
-      uses: docker/setup-buildx-action@v1
+    # - name: Login to docker hub
+    #   uses: actions/login-action@v1
+    #   with:
+    #     username: ${{ secrets.DOCKERHUB_USERNAME }}
+    #     password: ${{ secrets.DOCKERHUB_PASSWORD }}
+
+    # - name: Set up Docker Buildx
+    #   id: buildx
+    #   uses: docker/setup-buildx-action@v1
 
 
