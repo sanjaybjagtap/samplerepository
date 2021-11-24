@@ -52,7 +52,7 @@ jobs:
       working-directory: ./target
 
     - name: Docker build
-      run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/BookTest: ${{ github.sha }} .
+      run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/BookTest:${{ github.sha }} .
 
 
     # - name: Login to docker hub
