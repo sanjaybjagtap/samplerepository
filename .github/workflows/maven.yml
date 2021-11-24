@@ -32,7 +32,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: BookTest
-        path: samplerepo/target/*jar
+        path: /Users/c5331724/SAP-Data/Fioneer/samplerepo/target/*jar
         if-no-files-found: error
         retention-days: 3
 
