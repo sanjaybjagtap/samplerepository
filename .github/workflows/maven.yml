@@ -52,7 +52,7 @@ jobs:
       working-directory: ./target
 
     - name: Docker build
-      run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/bookapp:${{ github.sha }} .
+      run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/bookapp:latest .
 
     - name: Docker login
       uses: docker/login-action@v1
@@ -63,7 +63,7 @@ jobs:
 
 
     - name: Docker push
-      run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/bookapp:1.0
+      run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/bookapp:latest
 
 
 
