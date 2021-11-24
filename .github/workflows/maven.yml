@@ -30,10 +30,11 @@ jobs:
 
     - name: Upload artifact
       uses: actions/upload-artifact@v2
-      path: |-
-        samplerepo/target/*jar
-      if-no-files-found: error
-      retention-days: 3
+      with:
+        name: BookTest
+        path: samplerepo/target/*jar
+        if-no-files-found: error
+        retention-days: 3
 
     # - name: Login to docker hub
     #   uses: actions/login-action@v1
