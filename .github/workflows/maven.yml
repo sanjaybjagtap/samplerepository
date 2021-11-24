@@ -13,7 +13,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    name: Maven Build
+    name: Maven Build and docker image
 
     steps:
     - name: Checkout repository
@@ -37,23 +37,19 @@ jobs:
         if-no-files-found: error
         retention-days: 3
 
-  BookTest-Docker-Image:
-    runs-on: ubuntu-latest
-    name: Build BookTest-Docker-Image
+  
+    - name: Checkout the artifact
+      uses: actions/checkout@v2
 
-    steps:
-      - name: Checkout the artifact
-        uses: actions/checkout@v2
+    - name: Download the artifact
+      uses: actions/download-artifact@v2
+      with:
+        name: BookTest
+        path: ./target
 
-      - name: Download the artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: BookTest
-          path: ./target
-
-      - name: Display artifact
-        run:  ls -R
-        working-directory: ./target
+    - name: Display artifact
+      run:  ls -R
+      working-directory: ./target
 
 
 
