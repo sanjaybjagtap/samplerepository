@@ -13,7 +13,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    name: Build and Provide a docker image
+    name: Maven Build
 
     steps:
     - name: Checkout repository
@@ -48,7 +48,7 @@ jobs:
       - name: Download the artifact
         uses: actions/download-artifact@v2
         with:
-          name: BookTest-Artifact
+          name: BookTest
           path: ./target
 
       - name: Display artifact
