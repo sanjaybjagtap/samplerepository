@@ -44,13 +44,15 @@ jobs:
     - name: Download the artifact
       uses: actions/download-artifact@v2
       with:
-        name: BookTest
+        name: BookTest1
         path: ./target
 
     - name: Display artifact
       run:  ls -R
       working-directory: ./target
 
+    # - name: Docker build
+    #   run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/BookTest: ${{ github.sha }} .
 
 
     # - name: Login to docker hub
