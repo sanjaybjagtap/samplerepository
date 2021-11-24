@@ -13,6 +13,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    name: Build and Provide a docker image
 
     steps:
     - name: Checkout repository
@@ -35,6 +36,26 @@ jobs:
         path: ./target/*jar
         if-no-files-found: error
         retention-days: 3
+
+  BookTest-Docker-Image: 
+      runs-on: ubuntu-latest
+      name: Build BookTest-Docker-Image
+
+    steps:
+      - name: Checkout the artifact
+        uses: actions/checkout@v2
+
+      - name: Download the artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: BookTest-Artifact
+          path: ./target
+
+      - name: Display artifact
+        run:  ls -R
+        working-directory: ./target
+
+
 
     # - name: Login to docker hub
     #   uses: actions/login-action@v1
