@@ -29,52 +29,51 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 
-    - name: Upload artifact
-      uses: actions/upload-artifact@v2
+    - name: Build and push docker image
+      uses: mr-smithers-excellent/docker-build-push@v5
       with:
-        name: BookTest
-        path: ./target/*jar
-        if-no-files-found: error
-        retention-days: 3
-
-  
-    - name: Checkout the artifact
-      uses: actions/checkout@v2
-
-    - name: Download the artifact
-      uses: actions/download-artifact@v2
-      with:
-        name: BookTest
-        path: ./target
-
-    - name: Display artifact
-      run:  ls -R
-      working-directory: ./target
-
-    - name: Docker build
-      run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/bookapp:latest .
-
-    - name: Docker login
-      uses: docker/login-action@v1
-      with:
+        image: sanjaybjagtap/bookapp
+        tags: latest
         registry: docker.io
         username: ${{secrets.DOCKERHUB_USERNAME}}
-        password: ${{secrets.DOCKERHUB_PASSWORD}}
+        password: ${{secrets.DOCKERHUB_PASSWORD}}        
 
 
-    - name: Docker push
-      run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/bookapp:latest
-
-
-
-    # - name: Login to docker hub
-    #   uses: actions/login-action@v1
+    # - name: Upload artifact
+    #   uses: actions/upload-artifact@v2
     #   with:
-    #     username: ${{ secrets.DOCKERHUB_USERNAME }}
-    #     password: ${{ secrets.DOCKERHUB_PASSWORD }}
+    #     name: BookTest
+    #     path: ./target/*jar
+    #     if-no-files-found: error
+    #     retention-days: 3
 
-    # - name: Set up Docker Buildx
-    #   id: buildx
-    #   uses: docker/setup-buildx-action@v1
+  
+    # - name: Checkout the artifact
+    #   uses: actions/checkout@v2
+
+    # - name: Download the artifact
+    #   uses: actions/download-artifact@v2
+    #   with:
+    #     name: BookTest
+    #     path: ./target
+
+    # - name: Display artifact
+    #   run:  ls -R
+    #   working-directory: ./target
+
+    # - name: Docker build
+    #   run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/bookapp:latest .
+
+    # - name: Docker login
+    #   uses: docker/login-action@v1
+    #   with:
+    #     registry: docker.io
+    #     username: ${{secrets.DOCKERHUB_USERNAME}}
+    #     password: ${{secrets.DOCKERHUB_PASSWORD}}
+
+
+    # - name: Docker push
+    #   run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/bookapp:latest
+
 
 
